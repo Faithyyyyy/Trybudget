@@ -17,3 +17,12 @@
 .navlink .active {
   color: #ff7461;
 }
+
+/* .sideNav {
+  background: hsla(0, 0%, 100%, 0.3);
+} */
+.sideNav .active > *,
+.sideNav:hover {
+  background: hsla(0, 0%, 100%, 0.3);
+  color: white;
+}
