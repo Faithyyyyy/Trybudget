@@ -1,3 +1,5 @@
+import { NavLink } from "react-router-dom";
+
 function Sidebar() {
   return (
     <aside className="px-3 hidden lg:block w-[300px] fixed h-full bg-[#ff7461] top-0 left-0 pt-14">
@@ -9,7 +11,10 @@ function Sidebar() {
       </div>
       <div className="mt-10">
         {/* home */}
-        <div className="flex items-center gap-5 cursor-pointer sideNav py-3 pl-2 rounded mb-5">
+        <NavLink
+          to="/"
+          className="flex items-center gap-5 cursor-pointer sideNav py-3 pl-2 rounded mb-5"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-[22px] w-[22px]  text-white/60 navlink text-sm font-light"
@@ -25,9 +30,12 @@ function Sidebar() {
             ></path>
           </svg>
           <p className="text-white/60 text-md font-normal"> Home</p>
-        </div>
+        </NavLink>
         {/* budget */}
-        <div className="flex items-center gap-5 cursor-pointer sideNav py-3 pl-2 rounded mb-5">
+        <NavLink
+          to="/budget"
+          className="flex items-center gap-5 cursor-pointer sideNav py-3 pl-2 rounded mb-5"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-6 w-6 text-white/60 navlink"
@@ -43,16 +51,19 @@ function Sidebar() {
             ></path>
           </svg>
           <p className="text-white/60 text-md font-normal"> Budget</p>
-        </div>
+        </NavLink>
         {/* expenses */}
-        <div className="flex items-center gap-5 cursor-pointer sideNav py-3 pl-2 rounded mb-5">
+        <NavLink
+          to="/expense"
+          className="flex items-center gap-5 cursor-pointer sideNav py-3 pl-2 rounded mb-5"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-6 w-6 text-white/60 navlink"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
-            stroke-width="2"
+            strokeWidth="2"
           >
             <path
               strokeLinecap="round"
@@ -61,16 +72,19 @@ function Sidebar() {
             ></path>
           </svg>
           <p className="text-white/60 text-md font-normal"> Expenses</p>
-        </div>
+        </NavLink>
         {/* history */}
-        <div className="flex items-center gap-5 cursor-pointer sideNav py-3 pl-2 rounded">
+        <NavLink
+          to="/history"
+          className="flex items-center gap-5 cursor-pointer sideNav py-3 pl-2 rounded"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-6 w-6 text-white/60 navlink"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
-            stroke-width="2"
+            strokeWidth="2"
           >
             <path
               strokeLinecap="round"
@@ -84,7 +98,7 @@ function Sidebar() {
             ></path>
           </svg>
           <p className="text-white/60 text-md font-normal"> History</p>
-        </div>
+        </NavLink>
         {/* end */}
       </div>
     </aside>
