@@ -3,7 +3,7 @@ import NavBudgetSvg from "../Svgs/NavBudgetSvg.jsx";
 
 function Navbar() {
   return (
-    <nav className="bg-white rounded h-14 fixed bottom-10 left-0 nav flex justify-around items-center lg:hidden">
+    <nav className="bg-white rounded h-14 fixed bottom-10 left-0 nav flex justify-around items-center lg:hidden z-10">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         className="h-6 w-6  text-gray-400 navlink"
