@@ -14,3 +14,6 @@
   width: calc(100% - 2rem);
   margin: 1rem;
 }
+.navlink .active {
+  color: #ff7461;
+}
