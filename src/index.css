@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.account_oveview::after {
+  content: url("https://trybudget.netlify.app/static/media/bg-pattern.2d6e7fc4fd2fc3ff90ce.svg");
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+.nav {
+  width: calc(100% - 2rem);
+  margin: 1rem;
+}
