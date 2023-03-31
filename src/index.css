@@ -29,3 +29,6 @@
 .sideNav:hover > * {
   color: white;
 }
+.expenseBar {
+  transition: width 0.5s ease-out;
+}

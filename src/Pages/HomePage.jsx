@@ -4,6 +4,7 @@ import Sidebar from "../Components/Sidebar";
 import AmountSpentSvg from "../Svgs/AmountSpentSvg";
 import CurrentBalanceSvg from "../Svgs/CurrentBalanceSvg";
 import SvgWrap from "../Reusable_Icons/Accoun_overview_svgs";
+import Expressbar from "../Components/ExpressProgressbar";
 
 function HomePage() {
   return (
@@ -37,6 +38,7 @@ function HomePage() {
             </div>
           </div>
         </div>
+        <Expressbar />
       </main>
     </div>
   );
