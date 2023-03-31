@@ -1,4 +1,7 @@
+import { PercentageConversion } from "../Utils/PercentageConversion";
+
 function Expressbar() {
+  const wid = PercentageConversion(50, 60);
   return (
     <section className="bg-white  rounded py-20 px-10 w-full mt-10">
       <p className="font-light text-sm text-gray-400">Expenses so far</p>
@@ -6,11 +9,16 @@ function Expressbar() {
         <p className="font-light text-md">2000</p>
         <p className="font-light text-md">4000</p>
       </div>
-      <div className="w-full h-3 rounded-lg bg-[#ff7461] bg-opacity-10">
-        <div className="h-full rounded-lg bg-[#ff7461] expenseBar w-[80%]"></div>
+      <div className="w-full h-[10px] rounded-lg bg-[#ff7461] bg-opacity-10">
+        <div
+          className={`h-full rounded-lg bg-[#ff7461] expenseBar w-[${wid}%]`}
+          style={{ width: `${wid}%` }}
+        ></div>
       </div>
+      <p></p>
     </section>
   );
 }
 
 export default Expressbar;
+("");
