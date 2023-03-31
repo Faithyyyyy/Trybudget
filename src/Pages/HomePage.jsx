@@ -1,15 +1,14 @@
 import Account from "../Components/Account";
 import Header from "../Components/Header";
 import Sidebar from "../Components/Sidebar";
-import AmountSpentSvg from "../Svgs/AmountSpentSvg";
 import CurrentBalanceSvg from "../Svgs/CurrentBalanceSvg";
 import SvgWrap from "../Reusable_Icons/Accoun_overview_svgs";
 import Expressbar from "../Components/ExpressProgressbar";
 import Activity from "../Components/Activity";
-
+import MobileExpressbar from "../Components/MobileExpressbar";
 function HomePage() {
   return (
-    <div className="bg-[#ffede9] h-screen ">
+    <div className="bg-[#ffede9] h-screen">
       <Header />
       <Account />
       <Sidebar />
@@ -42,6 +41,7 @@ function HomePage() {
         <Expressbar />
         <Activity />
       </main>
+      <MobileExpressbar />
     </div>
   );
 }
