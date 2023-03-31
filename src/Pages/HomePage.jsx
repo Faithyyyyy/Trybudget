@@ -6,6 +6,8 @@ import SvgWrap from "../Reusable_Icons/Accoun_overview_svgs";
 import Expressbar from "../Components/ExpressProgressbar";
 import Activity from "../Components/Activity";
 import MobileExpressbar from "../Components/MobileExpressbar";
+import MobileActivity from "../Components/MobileActivity";
+
 function HomePage() {
   return (
     <div className="bg-[#ffede9] h-screen">
@@ -42,6 +44,7 @@ function HomePage() {
         <Activity />
       </main>
       <MobileExpressbar />
+      <MobileActivity />
     </div>
   );
 }
