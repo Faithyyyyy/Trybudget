@@ -10,7 +10,7 @@ import MobileActivity from "../Components/MobileActivity";
 
 function HomePage() {
   return (
-    <div className="bg-[#ffede9] h-screen">
+    <div className="bg-[#ffede9] ">
       <Header />
       <Account />
       <Sidebar />

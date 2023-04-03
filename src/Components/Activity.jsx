@@ -1,3 +1,5 @@
+import ActivityChart from "./ActivityChart";
+
 function Activity() {
   return (
     <section className="bg-white rounded py-10 px-10 w-full mt-10">
@@ -10,6 +12,7 @@ function Activity() {
           <p className="font-light text-sm text-gray-500">2 total</p>
         </div>
       </div>
+      <ActivityChart />
     </section>
   );
 }

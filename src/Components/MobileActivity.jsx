@@ -1,3 +1,5 @@
+import ActivityChart from "./ActivityChart";
+
 function MobileActivity() {
   return (
     <section className="bg-white rounded py-10 px-10 lg:hidden mt-10 mx-5">
@@ -10,6 +12,7 @@ function MobileActivity() {
           <p className="font-light text-sm text-gray-500">2 total</p>
         </div>
       </div>
+      <ActivityChart />
     </section>
   );
 }
