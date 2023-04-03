@@ -1,6 +1,5 @@
 import Account from "../Components/Account";
 import Header from "../Components/Header";
-import Sidebar from "../Components/Sidebar";
 import CurrentBalanceSvg from "../Svgs/CurrentBalanceSvg";
 import SvgWrap from "../Reusable_Icons/Accoun_overview_svgs";
 import Expressbar from "../Components/ExpressProgressbar";
@@ -13,7 +12,7 @@ function HomePage() {
     <div className="bg-[#ffede9] ">
       <Header />
       <Account />
-      <Sidebar />
+
       <main className="ml-[320px] mr-8 max-w-7xl mx-auto hidden lg:block mt-14">
         <div className="w-full">
           <div className="w-full flex gap-6">
