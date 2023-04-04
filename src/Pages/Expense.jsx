@@ -24,12 +24,12 @@ function Budgets() {
     }
   };
   return (
-    <section className="bg-[#ffede9] h-screen font-poppins">
+    <section className="bg-[#7788f479] h-screen font-poppins">
       <div className=" lg:ml-[320px] px-5">
         <Header />
 
         <h2 className="underline font-bold text-xl lg:text-2xl text-center mt-8 mb-5">
-          Create Your Budgets
+          Create Your Expenses
         </h2>
         <div className="bg-white p-12">
           <h3 className="text-[#6c7983] text-center mb-5">Choose a Category</h3>
