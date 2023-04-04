@@ -1,7 +1,10 @@
-function BudgetCard() {
+function BudgetCard({ roles, children }) {
   return (
-    <div className="bg-[#ffede9]">
-      <div className="bg-[#f9e0d9]"></div>
+    <div className="bg-[#ffede9]  inline-block justify-center items-center py-3 lg:py-6 rounded">
+      <div className="bg-[#f9e0d9] p-1 rounded-full self-center w-8 mx-auto mb-1">
+        {children}
+      </div>
+      <p className="font-light text-xs text-center">{roles}</p>
     </div>
   );
 }

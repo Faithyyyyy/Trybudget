@@ -32,3 +32,20 @@
 .expenseBar {
   transition: width 0.5s ease-out;
 }
+.grided {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+  gap: 10px;
+}
+@media screen and (min-width: 650px) {
+  .grided {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+  }
+}
+@media screen and (min-width: 950px) {
+  .grided {
+    /* grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); */
+    gap: 10px;
+  }
+}
