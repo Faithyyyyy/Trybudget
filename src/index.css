@@ -29,6 +29,9 @@
 .sideNav:hover > * {
   color: white;
 }
+.mobileNav.active > * {
+  color: #ff7461;
+}
 .expenseBar {
   transition: width 0.5s ease-out;
 }
