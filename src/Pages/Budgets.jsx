@@ -11,10 +11,12 @@ import { BsCart4 } from "react-icons/bs";
 import { BsBuildingsFill } from "react-icons/bs";
 import { BsLightningChargeFill } from "react-icons/bs";
 import { HiOutlineXMark } from "react-icons/hi2";
-
 import { useState } from "react";
+// import data from "../data";
+import { data } from "../data.jsx";
 
 function Budgets() {
+  console.log(data);
   const [numValue, setNumValue] = useState();
   const changeValue = (e) => {
     const re = /^[0-9\b]+$/;
@@ -31,10 +33,10 @@ function Budgets() {
         <h2 className="underline font-bold text-xl lg:text-2xl text-center mt-8 mb-5">
           Create Your Budgets
         </h2>
-        <div className="bg-white p-12">
+        <div className="bg-white p-6 md:p-12">
           <h3 className="text-[#6c7983] text-center mb-5">Choose a Category</h3>
           <div className="grided">
-            <BudgetCard roles="Education">
+            {/* <BudgetCard roles="Education">
               <FaGraduationCap className="text-[#ff7461] text-2xl" />
             </BudgetCard>
             <BudgetCard roles="Food">
@@ -66,7 +68,7 @@ function Budgets() {
             </BudgetCard>
             <BudgetCard roles="Rent">
               <BsLightningChargeFill className="text-[#ff7461] text-2xl" />
-            </BudgetCard>
+            </BudgetCard> */}
           </div>
         </div>
         <div className="bg-white px-8 pt-8 pb-3 mt-8 relative">
