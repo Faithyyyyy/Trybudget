@@ -1,9 +1,15 @@
 import Header from "../Components/Header";
 import { HiOutlineXMark } from "react-icons/hi2";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { data } from "../data.jsx";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import {} from "react";
 
 function Budgets() {
+  useEffect(() => {
+    AOS.init({ duration: 1000 });
+  }, []);
   console.log(data);
   const [numValue, setNumValue] = useState();
   const changeValue = (e) => {
@@ -21,7 +27,7 @@ function Budgets() {
         <h2 className="underline font-bold text-xl lg:text-2xl text-center mt-8 mb-5">
           Create Your Budgets
         </h2>
-        <div className="bg-white p-6 md:p-12">
+        <div className="bg-white p-6 md:p-12" data-aos="fade-out">
           <h3 className="text-[#6c7983] text-center mb-5">Choose a Category</h3>
           <div className="grided">
             {data.map((d) => {

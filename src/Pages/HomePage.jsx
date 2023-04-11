@@ -6,14 +6,23 @@ import Expressbar from "../Components/ExpressProgressbar";
 import Activity from "../Components/Activity";
 import MobileExpressbar from "../Components/MobileExpressbar";
 import MobileActivity from "../Components/MobileActivity";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { useEffect } from "react";
 
 function HomePage() {
+  useEffect(() => {
+    AOS.init({ duration: 1000 });
+  }, []);
   return (
     <div className="bg-[#ffede9]">
       <Header />
       <Account />
 
-      <main className="ml-[320px] mr-8 max-w-7xl mx-auto hidden lg:block mt-14">
+      <main
+        className="ml-[320px] mr-8 max-w-7xl mx-auto hidden lg:block mt-14"
+        data-aos="fade-out"
+      >
         <div className="w-full">
           <div className="w-full flex gap-6">
             <div className="w-[50%] bg-[#ff7461] h-52 rounded bg-[url(https://trybudget.netlify.app/static/media/bg-pattern.2d6e7fc4fd2fc3ff90ce.svg)] bg-no-repeat bg-left-top text-white pl-10 flex flex-col justify-center ">

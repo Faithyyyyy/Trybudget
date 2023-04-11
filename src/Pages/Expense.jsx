@@ -1,9 +1,14 @@
 import Header from "../Components/Header";
 import { data } from "../data.jsx";
 import { HiOutlineXMark } from "react-icons/hi2";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 function Budgets() {
+  useEffect(() => {
+    AOS.init({ duration: 1000 });
+  }, []);
   const [numValue, setNumValue] = useState();
   const changeValue = (e) => {
     const re = /^[0-9\b]+$/;
@@ -14,7 +19,7 @@ function Budgets() {
   };
   return (
     <section className="bg-[#7788f479] h-screen font-poppins">
-      <div className=" lg:ml-[320px] px-5">
+      <div className=" lg:ml-[320px] px-5" data-aos="fade-out">
         <Header />
 
         <h2 className="underline font-bold text-xl lg:text-2xl text-center mt-8 mb-5">
