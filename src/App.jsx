@@ -1,5 +1,5 @@
 import Navbar from "./Components/Navbar";
-import Homepage from "./Pages/Homepage";
+import Homepage from "./Pages/HomePage";
 import Budgets from "./Pages/Budgets";
 import Expense from "./Pages/Expense";
 import { Route, Routes } from "react-router-dom";
