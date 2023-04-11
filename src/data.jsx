@@ -14,11 +14,51 @@ export const data = [
   {
     id: 1,
     role: "Education",
-    icon: { FaGraduationCap },
+    icon: <FaGraduationCap />,
   },
   {
     id: 2,
     role: "Food",
-    icon: { GiHotMeal },
+    icon: <GiHotMeal />,
+  },
+  {
+    id: 3,
+    role: "Travel",
+    icon: <IoAirplaneSharp />,
+  },
+  {
+    id: 4,
+    role: "Clothes",
+    icon: <IoShirtOutline />,
+  },
+  {
+    id: 5,
+    role: "Health",
+    icon: <RiStethoscopeLine />,
+  },
+  {
+    id: 6,
+    role: "Transport",
+    icon: <AiOutlineCar />,
+  },
+  {
+    id: 7,
+    role: "Internet",
+    icon: <MdRouter />,
+  },
+  {
+    id: 8,
+    role: "Shopping",
+    icon: <BsCart4 />,
+  },
+  {
+    id: 9,
+    role: "Rent",
+    icon: <BsBuildingsFill />,
+  },
+  {
+    id: 9,
+    role: "Electricity",
+    icon: <BsLightningChargeFill />,
   },
 ];

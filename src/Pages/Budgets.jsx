@@ -1,18 +1,6 @@
 import Header from "../Components/Header";
-import BudgetCard from "../Components/BudgetCard";
-import { FaGraduationCap } from "react-icons/fa";
-import { GiHotMeal } from "react-icons/gi";
-import { IoAirplaneSharp } from "react-icons/io5";
-import { IoShirtOutline } from "react-icons/io5";
-import { RiStethoscopeLine } from "react-icons/ri";
-import { AiOutlineCar } from "react-icons/ai";
-import { MdRouter } from "react-icons/md";
-import { BsCart4 } from "react-icons/bs";
-import { BsBuildingsFill } from "react-icons/bs";
-import { BsLightningChargeFill } from "react-icons/bs";
 import { HiOutlineXMark } from "react-icons/hi2";
 import { useState } from "react";
-// import data from "../data";
 import { data } from "../data.jsx";
 
 function Budgets() {
@@ -36,39 +24,16 @@ function Budgets() {
         <div className="bg-white p-6 md:p-12">
           <h3 className="text-[#6c7983] text-center mb-5">Choose a Category</h3>
           <div className="grided">
-            {/* <BudgetCard roles="Education">
-              <FaGraduationCap className="text-[#ff7461] text-2xl" />
-            </BudgetCard>
-            <BudgetCard roles="Food">
-              <GiHotMeal className="text-[#ff7461] text-2xl" />
-            </BudgetCard>
-            <BudgetCard roles="Travel">
-              <IoAirplaneSharp className="text-[#ff7461] text-2xl" />
-            </BudgetCard>
-            <BudgetCard roles="Clothes">
-              <IoShirtOutline className="text-[#ff7461] text-2xl" />
-            </BudgetCard>
-            <BudgetCard roles="Health">
-              <RiStethoscopeLine className="text-[#ff7461] text-2xl" />
-            </BudgetCard>
-            <BudgetCard roles="Transport">
-              <AiOutlineCar className="text-[#ff7461] text-2xl" />
-            </BudgetCard>
-            <BudgetCard roles="Internet">
-              <MdRouter className="text-[#ff7461] text-2xl" />
-            </BudgetCard>
-            <BudgetCard roles="Internet">
-              <MdRouter className="text-[#ff7461] text-2xl" />
-            </BudgetCard>
-            <BudgetCard roles="Shopping">
-              <BsCart4 className="text-[#ff7461] text-2xl" />
-            </BudgetCard>
-            <BudgetCard roles="Rent">
-              <BsBuildingsFill className="text-[#ff7461] text-2xl" />
-            </BudgetCard>
-            <BudgetCard roles="Rent">
-              <BsLightningChargeFill className="text-[#ff7461] text-2xl" />
-            </BudgetCard> */}
+            {data.map((d) => {
+              return (
+                <div className="bg-[#ffede9]  inline-block justify-center items-center py-3 lg:py-6 rounded">
+                  <div className="bg-[#f9e0d9] p-1 rounded-full self-center w-8 mx-auto mb-1">
+                    <div className="text-[#ff7461] text-2xl"> {d.icon}</div>
+                  </div>
+                  <p className="font-light text-xs text-center">{d.role}</p>
+                </div>
+              );
+            })}
           </div>
         </div>
         <div className="bg-white px-8 pt-8 pb-3 mt-8 relative">
