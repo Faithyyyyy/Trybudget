@@ -57,7 +57,7 @@ export const data = [
     icon: <BsBuildingsFill />,
   },
   {
-    id: 9,
+    id: 10,
     role: "Electricity",
     icon: <BsLightningChargeFill />,
   },

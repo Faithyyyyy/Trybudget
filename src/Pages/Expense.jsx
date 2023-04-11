@@ -9,7 +9,7 @@ function Budgets() {
   useEffect(() => {
     AOS.init({ duration: 1000 });
   }, []);
-  const [numValue, setNumValue] = useState();
+  const [numValue, setNumValue] = useState("");
   const changeValue = (e) => {
     const re = /^[0-9\b]+$/;
     // if value is not blank, then test the regex
