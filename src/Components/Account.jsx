@@ -7,13 +7,16 @@ function Account() {
   const { totalBudgetAmount } = useSelector((store) => {
     return store.budget;
   });
-  console.log(totalBudgetAmount);
+  const { totalExpenseAmount } = useSelector((store) => {
+    return store.expense;
+  });
+  const total = totalBudgetAmount + totalExpenseAmount;
   return (
     <main>
       {/* Mobile screen account */}
       <div className="bg-white pt-7 px-3 pb-3 rounded mx-5 lg:hidden">
         <p className="text-gray-400 text-sm mb-2">Budget</p>
-        <p className="text-2xl md:text-3xl mb-3">$.00</p>
+        <p className="text-2xl md:text-3xl mb-3">${total}.00</p>
         <div className="text-white bg-gradient-to-tl from-indigo-300 to-red-400 p-2 rounded w-full py-10 px-5 flex justify-between items-center account_oveview relative overflow-hidden">
           {/* MONEY BUDGETTED */}
           <div>
@@ -33,7 +36,7 @@ function Account() {
               <AmountSpentSvg />
             </SvgWrap>
             <p>Balance</p>
-            <p>$1.00</p>
+            <p>${totalExpenseAmount}.00</p>
           </div>
           {/* MONEY SPENT */}
         </div>

@@ -89,6 +89,24 @@ function Expense() {
     e.preventDefault();
     addToExpenseList();
   };
+  // logic for the disabled and active create button
+  let disabled = false;
+  if (
+    (!currentExpense && !mainExpense) ||
+    (!currentExpense && mainExpense) ||
+    (currentExpense && !mainExpense) ||
+    (currentExpense && Number(mainExpense) < 0)
+  ) {
+    disabled = true;
+  } else {
+    disabled = false;
+  }
+  // logic to deselect a selected category and its input if there's any
+  const deselectCategory = () => {
+    dispatch(setCurrentCategory(""));
+    dispatch(setMainExpense(""));
+    setSelectedBox(0);
+  };
 
   return (
     <section className="bg-[#7788f479] min-h-screen font-poppins">
@@ -152,13 +170,13 @@ function Expense() {
           </div>
           <div className="flex gap-7   -bottom-8 items-center justify-center relative">
             <div
-              // onClick={deselectCategory}
+              onClick={deselectCategory}
               className="w-9 flex cursor-pointer justify-center items-center h-9 rounded-full bg-[#ff7461]"
             >
               <HiOutlineXMark className="text-white text-[29px]" />
             </div>
             <button
-              // disabled={disabled}
+              disabled={disabled}
               className=" bg-[#7788f4] disabled:bg-[#a7a7a7] uppercase px-5 py-2 text-white rounded-2xl text-sm font-light tracking-wider"
             >
               create

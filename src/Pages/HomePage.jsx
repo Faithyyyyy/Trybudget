@@ -12,9 +12,14 @@ import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 function HomePage() {
-  const { totalBudgetAmount } = useSelector((store) => {
+  const { totalBudgetAmount, budgetList } = useSelector((store) => {
     return store.budget;
   });
+  const { totalExpenseAmount, expenseList } = useSelector((store) => {
+    return store.expense;
+  });
+  const total = totalBudgetAmount + totalExpenseAmount;
+
   useEffect(() => {
     AOS.init({ duration: 1000 });
   }, []);
@@ -48,7 +53,7 @@ function HomePage() {
                 </svg>
               </SvgWrap>
               <p className="mt-2 mb-1">Amount Spent</p>
-              <p className="text-2xl font-light">$0.00</p>
+              <p className="text-2xl font-light">${totalExpenseAmount}.00</p>
             </div>
           </div>
         </div>

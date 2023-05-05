@@ -191,7 +191,6 @@ function Budgets() {
             </h3>
             {budgetList.length > 0 && (
               <button
-                data-aos="fade-out"
                 className="bg-gradient-to-tl from-indigo-300 to-red-400 text-black text-xs py-2 px-5 rounded-md"
                 onClick={() => dispatch(clearBudgetlist())}
               >
