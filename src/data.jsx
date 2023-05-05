@@ -10,11 +10,24 @@ import { BsCart4 } from "react-icons/bs";
 import { BsBuildingsFill } from "react-icons/bs";
 import { BsLightningChargeFill } from "react-icons/bs";
 import { HiOutlineXMark } from "react-icons/hi2";
+import {
+  Food,
+  School,
+  Plane,
+  Clothes,
+  Health,
+  Transport,
+  Internet,
+  Shopping,
+  Rent,
+  Electricity,
+} from "./icons";
+
 export const data = [
   {
     id: 1,
     role: "Education",
-    icon: <FaGraduationCap />,
+    icon: <School />,
   },
   {
     id: 2,
@@ -29,7 +42,7 @@ export const data = [
   {
     id: 4,
     role: "Clothes",
-    icon: <IoShirtOutline />,
+    icon: <Clothes />,
   },
   {
     id: 5,
@@ -39,26 +52,26 @@ export const data = [
   {
     id: 6,
     role: "Transport",
-    icon: <AiOutlineCar />,
+    icon: <Transport />,
   },
   {
     id: 7,
     role: "Internet",
-    icon: <MdRouter />,
+    icon: <Internet />,
   },
   {
     id: 8,
     role: "Shopping",
-    icon: <BsCart4 />,
+    icon: <Shopping />,
   },
   {
     id: 9,
     role: "Rent",
-    icon: <BsBuildingsFill />,
+    icon: <Rent />,
   },
   {
     id: 10,
     role: "Electricity",
-    icon: <BsLightningChargeFill />,
+    icon: <Electricity />,
   },
 ];

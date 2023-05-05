@@ -2,34 +2,34 @@ import { createSlice } from "@reduxjs/toolkit";
 import { json } from "react-router-dom";
 import { data } from "../data";
 
-const getBudgetList = () => {
-  const budgetList = localStorage.getItem("budget");
-  if (budgetList) {
-    return JSON.parse(budgetList);
+const getExpenseList = () => {
+  const expenseList = localStorage.getItem("budget");
+  if (expenseList) {
+    return JSON.parse(expenseList);
   }
   return [];
 };
 const initialState = {
   // budgetsList: data,
-  budgetList: getBudgetList(),
-  mainBudget: "",
-  currentCategory: "",
+  expenseList: getExpenseList(),
+  mainExpense: "",
+  currentExpense: "",
   categoryID: "",
   isEditing: false,
   editID: null,
-  TotalBudget: 680,
+  TotalExpense: 680,
   currentBalance: 0,
 };
 
-const budgetSlice = createSlice({
-  name: "budget",
+const expenseSlice = createSlice({
+  name: "expense",
   initialState,
   reducers: {
-    setMainBudget: (state, action) => {
-      state.mainBudget = action.payload;
+    setMainExpense: (state, action) => {
+      state.mainExpense = action.payload;
     },
-    setBudgetList: (state, action) => {
-      state.budgetList = action.payload;
+    setExpenseList: (state, action) => {
+      state.expenseList = action.payload;
     },
     setCurrentCategory: (state, action) => {
       state.currentCategory = action.payload;
@@ -37,13 +37,13 @@ const budgetSlice = createSlice({
     setcategoryID: (state, action) => {
       state.categoryID = action.payload;
     },
-    removeBudgetItem: (state, action) => {
-      state.budgetList = state.budgetList.filter(
+    removeExpenseItem: (state, action) => {
+      state.expenseList = state.expenseList.filter(
         (item) => item.id !== action.payload
       );
     },
-    clearBudgetlist: (state) => {
-      state.budgetList = [];
+    clearExpenselist: (state) => {
+      state.expenseList = [];
     },
     setIsEditing: (state, action) => {
       state.isEditing = action.payload;
@@ -54,13 +54,13 @@ const budgetSlice = createSlice({
   },
 });
 export const {
-  setBudgetList,
-  setMainBudget,
+  setExpenseList,
+  setMainExpense,
   setCurrentCategory,
   setcategoryID,
   removeBudgetItem,
   clearBudgetlist,
   setIsEditing,
   setEditID,
-} = budgetSlice.actions;
-export default budgetSlice.reducer;
+} = expenseSlice.actions;
+export default expenseSlice.reducer;
