@@ -3,14 +3,22 @@ import { json } from "react-router-dom";
 import { data } from "../data";
 
 const getExpenseList = () => {
-  const expenseList = localStorage.getItem("budget");
+  const expenseList = localStorage.getItem("expense");
   if (expenseList) {
     return JSON.parse(expenseList);
   }
   return [];
 };
+const getTotalAmount = () => {
+  let amount = localStorage.getItem("totalBudgetAmount");
+  if (amount) {
+    return JSON.parse(amount);
+  }
+  return 0;
+};
+
 const initialState = {
-  // budgetsList: data,
+  totalExpenseAmount: getTotalAmount(),
   expenseList: getExpenseList(),
   mainExpense: "",
   currentExpense: "",
@@ -20,7 +28,6 @@ const initialState = {
   TotalExpense: 680,
   currentBalance: 0,
 };
-
 const expenseSlice = createSlice({
   name: "expense",
   initialState,
@@ -32,7 +39,7 @@ const expenseSlice = createSlice({
       state.expenseList = action.payload;
     },
     setCurrentCategory: (state, action) => {
-      state.currentCategory = action.payload;
+      state.currentExpense = action.payload;
     },
     setcategoryID: (state, action) => {
       state.categoryID = action.payload;
@@ -51,15 +58,23 @@ const expenseSlice = createSlice({
     setEditID: (state, action) => {
       state.editID = action.payload;
     },
+    calculateTotalBudget: (state) => {
+      let total = 0;
+      state.budgetList.forEach((item) => {
+        total += parseInt(item.amount);
+      });
+      state.totalBudgetAmount = total;
+    },
   },
 });
+
 export const {
   setExpenseList,
   setMainExpense,
   setCurrentCategory,
   setcategoryID,
-  removeBudgetItem,
-  clearBudgetlist,
+  removeExpenseItem,
+  clearExpenselist,
   setIsEditing,
   setEditID,
 } = expenseSlice.actions;

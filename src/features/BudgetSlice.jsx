@@ -1,6 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { json } from "react-router-dom";
-import { data } from "../data";
 
 const getBudgetList = () => {
   const budgetList = localStorage.getItem("budget");
@@ -9,15 +7,23 @@ const getBudgetList = () => {
   }
   return [];
 };
+
+const getTotalAmount = () => {
+  let amount = localStorage.getItem("totalBudgetAmount");
+  if (amount) {
+    return JSON.parse(amount);
+  }
+  return 0;
+};
+
 const initialState = {
-  // budgetsList: data,
+  totalBudgetAmount: getTotalAmount(),
   budgetList: getBudgetList(),
   mainBudget: "",
   currentCategory: "",
   categoryID: "",
   isEditing: false,
   editID: null,
-  TotalBudget: 680,
   currentBalance: 0,
 };
 
@@ -51,6 +57,13 @@ const budgetSlice = createSlice({
     setEditID: (state, action) => {
       state.editID = action.payload;
     },
+    calculateTotalBudget: (state) => {
+      let total = 0;
+      state.budgetList.forEach((item) => {
+        total += parseInt(item.amount);
+      });
+      state.totalBudgetAmount = total;
+    },
   },
 });
 export const {
@@ -62,5 +75,6 @@ export const {
   clearBudgetlist,
   setIsEditing,
   setEditID,
+  calculateTotalBudget,
 } = budgetSlice.actions;
 export default budgetSlice.reducer;

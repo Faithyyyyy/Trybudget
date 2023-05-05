@@ -17,6 +17,7 @@ import {
   clearBudgetlist,
   setIsEditing,
   setEditID,
+  calculateTotalBudget,
 } from "../features/BudgetSlice";
 
 function Budgets() {
@@ -28,13 +29,21 @@ function Budgets() {
     budgetList,
     currentCategory,
     categoryID,
-  } = useSelector((store) => store.budget);
+  } = useSelector((store) => {
+    return store.budget;
+  });
+  console.log(budgetList);
   const dispatch = useDispatch();
   // for the smooth transition
   useEffect(() => {
     AOS.init({ duration: 1000 });
   }, []);
   // for the smooth transition
+  // Anytime you add to the budget list, update the saced state int he local storage, this is to retain the data gotten even after refresh
+  useEffect(() => {
+    dispatch(calculateTotalBudget());
+    localStorage.setItem("budget", JSON.stringify(budgetList));
+  }, [budgetList]);
 
   const [selectedBox, setSelectedBox] = useState(0);
   const handleclick = (id) => {
@@ -65,6 +74,7 @@ function Budgets() {
       const set = budgetList.map((budget) => {
         if (budget.id === editID) {
           return { ...budget, amount: mainBudget };
+          // console.log("hi");
         }
         return budget;
       });
@@ -80,10 +90,6 @@ function Budgets() {
     e.preventDefault();
     addToBudgetList();
   };
-  // Anytime you add to the budget list, update the saced state int he local storage, this is to retain the data gotten even after refresh
-  useEffect(() => {
-    localStorage.setItem("budget", JSON.stringify(budgetList));
-  }, [budgetList]);
   // logic for the disabled and active create button
   let disabled = false;
   if (

@@ -9,8 +9,12 @@ import MobileActivity from "../Components/MobileActivity";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 
 function HomePage() {
+  const { totalBudgetAmount } = useSelector((store) => {
+    return store.budget;
+  });
   useEffect(() => {
     AOS.init({ duration: 1000 });
   }, []);
@@ -30,7 +34,7 @@ function HomePage() {
                 <CurrentBalanceSvg />
               </SvgWrap>
               <p className="mt-2 mb-1">Current Balance</p>
-              <p className="text-2xl font-light">$0.00</p>
+              <p className="text-2xl font-light">${totalBudgetAmount}.00</p>
             </div>
             <div className="w-[50%] bg-[#7688F3] h-52 rounded bg-[url(https://trybudget.netlify.app/static/media/bg-pattern.2d6e7fc4fd2fc3ff90ce.svg)] bg-no-repeat bg-left-top text-white pl-10 flex flex-col justify-center ">
               <SvgWrap>

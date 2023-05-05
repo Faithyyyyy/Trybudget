@@ -21,15 +21,14 @@ import {
 
 function Expense() {
   const {
-    expenseList,
-    currentExpense,
-    categoryID,
+    // budgetsList,
     isEditing,
     editID,
     mainExpense,
-  } = useSelector((store) => {
-    return store.expense;
-  });
+    expenseList,
+    currentExpense,
+    categoryID,
+  } = useSelector((store) => store.budget);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -40,14 +39,6 @@ function Expense() {
   const handleclick = (id) => {
     setSelectedBox(id);
   };
-
-  // Anytime you add to the budget list, update the saced state int he local storage, this is to retain the data gotten even after refresh
-  useEffect(() => {
-    if (expenseList) {
-      localStorage.setItem("expense", JSON.stringify(expenseList));
-    }
-  }, [expenseList]);
-
   // Add to the budget list when a budget is inputted
   const addToExpenseList = () => {
     const checkExpenseList = expenseList.find(
@@ -87,9 +78,31 @@ function Expense() {
     e.preventDefault();
     addToExpenseList();
   };
+  // Anytime you add to the budget list, update the saced state int he local storage, this is to retain the data gotten even after refresh
+  useEffect(() => {
+    localStorage.setItem("expense", JSON.stringify(expenseList));
+  }, [expenseList]);
+  // logic for the disabled and active create button
+  // let disabled = false;
+  // if (
+  //   (!currentExpense && !mainExpense) ||
+  //   (!currentExpense && mainExpense) ||
+  //   (currentExpense && !mainExpense) ||
+  //   (currentExpense && Number(mainExpense) < 0)
+  // ) {
+  //   disabled = true;
+  // } else {
+  //   disabled = false;
+  // }
+  // logic to deselect a selected category and its input if there's any
+  // const deselectCategory = () => {
+  //   dispatch(setCurrentCategory(""));
+  //   dispatch(setMainExpense(""));
+  //   setSelectedBox(0);
+  // };
 
   return (
-    <section className="bg-[#7788f479] min-h-screen font-poppins">
+    <section className="bg-[#7788f479] h-screen font-poppins">
       <div className=" lg:ml-[320px] px-5" data-aos="fade-out">
         <Header />
 
@@ -170,6 +183,7 @@ function Expense() {
             </h3>
             {expenseList?.length > 0 && (
               <button
+                data-aos="fade-out"
                 className="bg-gradient-to-tl from-indigo-300 to-red-400 text-black text-xs py-2 px-5 rounded-md"
                 onClick={() => dispatch(clearExpenselist())}
               >
@@ -182,11 +196,11 @@ function Expense() {
               return (
                 <div
                   key={expense.id}
-                  className="bg-white flex justify-between items-center py-2 px-3 rounded border-l-4 border-[#7788f4]"
+                  className="bg-white flex justify-between items-center py-2 px-3 rounded border-l-4 border-[#ff7461]"
                 >
                   <div className="flex gap-3 items-center">
-                    <div className="bg-[#c3c9f4]  flex justify-center items-center rounded-full self-center w-6 h-6 mx-auto mb-1">
-                      <div className="text-[#7788f4] text-lg ">
+                    <div className="bg-[#f9e0d9] p-1 rounded-full self-center w-8 mx-auto mb-1">
+                      <div className="text-[#ff7461] text-xl ">
                         {" "}
                         {data[expense.id - 1].icon}
                       </div>
@@ -210,7 +224,7 @@ function Expense() {
                       }}
                     />
                     <RiDeleteBin5Line
-                      className="text-[#7788f4] cursor-pointer"
+                      className="text-[#ff7461] cursor-pointer"
                       onClick={() => dispatch(removeExpenseItem(expense.id))}
                     />
                   </div>
