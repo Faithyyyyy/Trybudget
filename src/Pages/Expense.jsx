@@ -17,6 +17,7 @@ import {
   clearExpenselist,
   setIsEditing,
   setEditID,
+  calculateTotalBudget,
 } from "../features/ExpenseSlice";
 
 function Expense() {
@@ -44,6 +45,7 @@ function Expense() {
   // Anytime you add to the budget list, update the saced state int he local storage, this is to retain the data gotten even after refresh
   useEffect(() => {
     if (expenseList) {
+      dispatch(calculateTotalBudget());
       localStorage.setItem("expense", JSON.stringify(expenseList));
     }
   }, [expenseList]);

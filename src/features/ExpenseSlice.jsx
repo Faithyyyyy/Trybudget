@@ -60,10 +60,10 @@ const expenseSlice = createSlice({
     },
     calculateTotalBudget: (state) => {
       let total = 0;
-      state.budgetList.forEach((item) => {
+      state.expenseList.forEach((item) => {
         total += parseInt(item.amount);
       });
-      state.totalBudgetAmount = total;
+      state.totalExpenseAmount = total;
     },
   },
 });
@@ -77,5 +77,6 @@ export const {
   clearExpenselist,
   setIsEditing,
   setEditID,
+  calculateTotalBudget,
 } = expenseSlice.actions;
 export default expenseSlice.reducer;
