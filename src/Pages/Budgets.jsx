@@ -183,7 +183,7 @@ function Budgets() {
             </button>
           </div>
         </form>
-        <div className="mt-14 pb-14">
+        <div className="mt-14 pb-24">
           <div className="flex justify-between">
             <h3 className="font-bold text-[#6c7983]">
               ({budgetList?.length}) Budgets

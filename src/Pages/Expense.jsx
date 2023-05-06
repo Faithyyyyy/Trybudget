@@ -213,7 +213,7 @@ function Expense() {
             </button>
           </div>
         </form>
-        <div className="mt-14 pb-14">
+        <div className="mt-14 pb-24">
           <div className="flex justify-between">
             <h3 className="font-bold text-[#6c7983]">
               ({expenseList?.length}) Budgets
@@ -227,7 +227,7 @@ function Expense() {
               </button>
             )}
           </div>
-          <div className="my-3 md:mb-0 md:grid gap-6 grid-cols-2">
+          <div className="my-3  md:grid gap-6 grid-cols-2">
             {expenseList?.map((expense) => {
               return (
                 <div

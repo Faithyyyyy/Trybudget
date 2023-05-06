@@ -1,6 +1,11 @@
+import { useSelector } from "react-redux";
 import ActivityChart from "./ActivityChart";
+import EmptyActivity from "./emptyActivity";
 
 function Activity() {
+  const { totalBudgetAmount, budgetList } = useSelector((store) => {
+    return store.budget;
+  });
   return (
     <section className="bg-white rounded py-10 px-10 w-full mt-10">
       <div className="flex justify-between">
@@ -12,7 +17,7 @@ function Activity() {
           <p className="font-light text-sm text-gray-500">2 total</p>
         </div>
       </div>
-      <ActivityChart />
+      {budgetList.length > 0 ? <ActivityChart /> : <EmptyActivity />}
     </section>
   );
 }
