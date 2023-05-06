@@ -213,7 +213,7 @@ function Expense() {
             </button>
           </div>
         </form>
-        <div className="mt-14">
+        <div className="mt-14 pb-14">
           <div className="flex justify-between">
             <h3 className="font-bold text-[#6c7983]">
               ({expenseList?.length}) Budgets
@@ -232,7 +232,7 @@ function Expense() {
               return (
                 <div
                   key={expense.id}
-                  className="bg-white flex justify-between items-center py-2 px-3 rounded border-l-4 border-[#7788f4]"
+                  className="bg-white flex my-3 md:mb-0 justify-between items-center py-2 px-3 rounded border-l-4 border-[#7788f4]"
                 >
                   <div className="flex gap-3 items-center">
                     <div className="bg-[#c3c9f4]  flex justify-center items-center rounded-full self-center w-6 h-6 mx-auto mb-1">

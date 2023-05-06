@@ -183,7 +183,7 @@ function Budgets() {
             </button>
           </div>
         </form>
-        <div className="mt-14">
+        <div className="mt-14 pb-14">
           <div className="flex justify-between">
             <h3 className="font-bold text-[#6c7983]">
               ({budgetList?.length}) Budgets
@@ -197,12 +197,12 @@ function Budgets() {
               </button>
             )}
           </div>
-          <div className="my-3 md:mb-0 md:grid gap-6 grid-cols-2">
+          <div className=" md:grid gap-6 grid-cols-2">
             {budgetList?.map((budget) => {
               return (
                 <div
                   key={budget.id}
-                  className="bg-white flex justify-between items-center py-2 px-3 rounded border-l-4 border-[#ff7461]"
+                  className="bg-white flex my-3 md:mb-0 justify-between items-center py-2 px-3 rounded border-l-4 border-[#ff7461]"
                 >
                   <div className="flex gap-3 items-center">
                     <div className="bg-[#f9e0d9] p-1 rounded-full self-center w-8 mx-auto mb-1">
