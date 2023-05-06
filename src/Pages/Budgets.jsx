@@ -32,7 +32,6 @@ function Budgets() {
   } = useSelector((store) => {
     return store.budget;
   });
-  console.log(budgetList);
   const dispatch = useDispatch();
   // for the smooth transition
   useEffect(() => {

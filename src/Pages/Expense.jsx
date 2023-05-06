@@ -4,9 +4,12 @@ import { HiOutlineXMark } from "react-icons/hi2";
 import { HiOutlinePencil } from "react-icons/hi";
 import { RiDeleteBin5Line } from "react-icons/ri";
 import { GrFormCheckmark } from "react-icons/gr";
+import { GiCancel } from "react-icons/gi";
 import { useState, useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { useSelector, useDispatch } from "react-redux";
 import {
   setMainExpense,
@@ -21,6 +24,7 @@ import {
 } from "../features/ExpenseSlice";
 
 function Expense() {
+  const customId = "custom-id-yes";
   const {
     expenseList,
     currentExpense,
@@ -30,6 +34,9 @@ function Expense() {
     mainExpense,
   } = useSelector((store) => {
     return store.expense;
+  });
+  const { budgetList } = useSelector((store) => {
+    return store.budget;
   });
   const dispatch = useDispatch();
 
@@ -107,6 +114,28 @@ function Expense() {
     dispatch(setMainExpense(""));
     setSelectedBox(0);
   };
+  // logic to check if a selected expense has been budgetted for
+  const checkSelectedExpense = (id, info) => {
+    const checkers = budgetList.find((budlist) => id === budlist.id);
+    console.log(checkers);
+    if (!checkers) {
+      return (
+        setSelectedBox(0),
+        toast.warning(
+          <p>
+            Create a budget for <span className="text-[#ff7461]">{info}</span>{" "}
+            first
+          </p>,
+          {
+            toastId: customId,
+            icon: ({ theme, type }) => (
+              <GiCancel className="text-[#ff7461] text-lg" />
+            ),
+          }
+        )
+      );
+    }
+  };
 
   return (
     <section className="bg-[#7788f479] min-h-screen font-poppins">
@@ -126,6 +155,7 @@ function Expense() {
                     handleclick(d.id);
                     dispatch(setCurrentCategory(d.role));
                     dispatch(setcategoryID(d.id));
+                    checkSelectedExpense(d.id, d.role);
                   }}
                   key={d.id}
                   className={`bg-[#7788f479] border-2 transition-opacity opacity-100  ${
@@ -240,6 +270,23 @@ function Expense() {
           </div>
         </div>
       </div>
+      <ToastContainer
+        position="top-center"
+        autoClose={2000}
+        hideProgressBar={true}
+        closeButton={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+        className="w-[70%] m-6 md:w-[1400px] flex"
+        bodyClassName={() =>
+          "text-xs gap-0 font-poppins flex items-center justify-center"
+        }
+      />
     </section>
   );
 }
