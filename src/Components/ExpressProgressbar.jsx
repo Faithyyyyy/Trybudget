@@ -20,8 +20,8 @@ function Expressbar() {
     <section className="bg-white  rounded py-10 px-10 w-full mt-10">
       <p className="font-light text-sm text-gray-400">Expenses so far</p>
       <div className="flex justify-between my-2">
-        <p className="font-light text-md">${totalExpenseAmount}</p>
-        <p className="font-light text-md">${totalBudgetAmount}</p>
+        <p className="font-light text-md">${totalExpenseAmount}.00</p>
+        <p className="font-light text-md">${totalBudgetAmount}.00</p>
       </div>
       <label for="file"></label>
       <progress

@@ -22,7 +22,7 @@ function EmptyActivity() {
           </svg>
         </div>
       </div>
-      <p className="text-[#6c7983] text-sm">
+      <p className="text-[#6c7983] text-center text-sm">
         Your budget activities appears here when you create your budget.
       </p>
       <Link

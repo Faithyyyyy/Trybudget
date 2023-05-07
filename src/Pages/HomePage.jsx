@@ -24,7 +24,7 @@ function HomePage() {
     AOS.init({ duration: 1000 });
   }, []);
   return (
-    <div className="bg-[#ffede9]">
+    <div className="bg-[#ffede9] pb-11 min-h-screen">
       <Header />
       <Account />
 
