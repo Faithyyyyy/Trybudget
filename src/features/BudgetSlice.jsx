@@ -7,6 +7,20 @@ const getBudgetList = () => {
   }
   return [];
 };
+const getBudgetLabel = () => {
+  const budgetLabel = localStorage.getItem("budgetLabel");
+  if (budgetLabel) {
+    return JSON.parse(budgetLabel);
+  }
+  return [];
+};
+const getBudgetData = () => {
+  const budData = localStorage.getItem("budgetData");
+  if (budData) {
+    return JSON.parse(budData);
+  }
+  return [];
+};
 
 const getTotalAmount = () => {
   let amount = localStorage.getItem("totalBudgetAmount");
@@ -19,7 +33,9 @@ const getTotalAmount = () => {
 const initialState = {
   totalBudgetAmount: getTotalAmount(),
   budgetList: getBudgetList(),
+  budgetData: getBudgetData(),
   mainBudget: "",
+  budgetLabel: getBudgetLabel(),
   currentCategory: "",
   categoryID: "",
   isEditing: false,
@@ -37,11 +53,17 @@ const budgetSlice = createSlice({
     setBudgetList: (state, action) => {
       state.budgetList = action.payload;
     },
+    setBudgetData: (state, action) => {
+      state.budgetData = action.payload;
+    },
     setCurrentCategory: (state, action) => {
       state.currentCategory = action.payload;
     },
     setcategoryID: (state, action) => {
       state.categoryID = action.payload;
+    },
+    setBudgetLabel: (state, action) => {
+      state.budgetLabel = action.payload;
     },
     removeBudgetItem: (state, action) => {
       state.budgetList = state.budgetList.filter(
@@ -76,5 +98,7 @@ export const {
   setIsEditing,
   setEditID,
   calculateTotalBudget,
+  setBudgetData,
+  setBudgetLabel,
 } = budgetSlice.actions;
 export default budgetSlice.reducer;

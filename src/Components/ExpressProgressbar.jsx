@@ -23,7 +23,7 @@ function Expressbar() {
         <p className="font-light text-md">${totalExpenseAmount}.00</p>
         <p className="font-light text-md">${totalBudgetAmount}.00</p>
       </div>
-      <label for="file"></label>
+      <label htmlFor="file"></label>
       <progress
         id="file"
         max={totalBudgetAmount}

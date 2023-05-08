@@ -12,6 +12,8 @@ import {
   setMainBudget,
   setBudgetList,
   setCurrentCategory,
+  setBudgetData,
+  setBudgetLabel,
   setcategoryID,
   removeBudgetItem,
   clearBudgetlist,
@@ -29,6 +31,8 @@ function Budgets() {
     budgetList,
     currentCategory,
     categoryID,
+    budgetData,
+    budgetLabel,
   } = useSelector((store) => {
     return store.budget;
   });
@@ -42,6 +46,8 @@ function Budgets() {
   useEffect(() => {
     dispatch(calculateTotalBudget());
     localStorage.setItem("budget", JSON.stringify(budgetList));
+    localStorage.setItem("budgetData", JSON.stringify(budgetData));
+    localStorage.setItem("budgetLabel", JSON.stringify(budgetLabel));
   }, [budgetList]);
 
   const [selectedBox, setSelectedBox] = useState(0);
@@ -54,6 +60,8 @@ function Budgets() {
     const checkBudgetList = budgetList.find(
       (budList) => budList.id === selectedBox
     );
+    const checkBudgetLabel = budgetLabel.includes(currentCategory);
+    console.log(checkBudgetLabel);
     const checkBudgetItemId = budgetList.find(
       (budList) => budList.id === editID
     );
@@ -73,17 +81,20 @@ function Budgets() {
       const set = budgetList.map((budget) => {
         if (budget.id === editID) {
           return { ...budget, amount: mainBudget };
-          // console.log("hi");
         }
         return budget;
       });
       dispatch(setBudgetList(set));
     }
+    if (!checkBudgetLabel) {
+      dispatch(setBudgetLabel([...budgetLabel, currentCategory]));
+    }
+    dispatch(setBudgetData([...budgetData, mainBudget]));
     dispatch(setCurrentCategory(""));
     dispatch(setMainBudget(""));
     setSelectedBox(0);
   };
-
+  console.log(budgetLabel);
   // logic tp handle the submission of the form
   const handleSubmit = (e) => {
     e.preventDefault();
