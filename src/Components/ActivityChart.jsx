@@ -28,9 +28,6 @@ function ActivityChart() {
           "#fbcbc9",
           "#36a2eb",
           "#cbf6db",
-          // "rgb(75, 192, 192)",
-          // "rgb(153, 102, 255)",
-          // "rgb(255, 159, 64)",
           "#e52165",
           "#5c3c92",
           "#fbcbc9",
@@ -69,19 +66,19 @@ function ActivityChart() {
       <div>
         {data.labels.map((item, index) => {
           return (
-            <div className="bg-[#fbfbfb] bs" key={index}>
+            <div className="bg-[#fbfbfb] bs mb-4 py-2 px-3" key={index}>
               <div className="flex items-center gap-3">
                 <div
                   className={`rounded bg-[${data.datasets[0].backgroundColor[index]}] h-3 w-3`}
                 ></div>
                 <p>{item}</p>
               </div>
-              <p className="text-[#a7a7a7] text-xs font-light">
+              <p className="text-[#a7a7a7] text-xs font-light mt-1">
                 {data.datasets[0].data[index]} USD -
                 <span
                   className={`ml-1 text-[${data.datasets[0].backgroundColor[index]}]`}
                 >
-                  {percentage(data.datasets[0].data[index]).toFixed(2)}
+                  {percentage(data.datasets[0].data[index]).toFixed(2)}%
                 </span>
               </p>
             </div>

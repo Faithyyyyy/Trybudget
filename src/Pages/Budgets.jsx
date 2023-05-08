@@ -94,7 +94,6 @@ function Budgets() {
     dispatch(setMainBudget(""));
     setSelectedBox(0);
   };
-  console.log(budgetLabel);
   // logic tp handle the submission of the form
   const handleSubmit = (e) => {
     e.preventDefault();
