@@ -7,6 +7,14 @@ function ActivityChart() {
   const { budgetData, budgetLabel } = useSelector((store) => {
     return store.budget;
   });
+
+  const percentage = (budget) => {
+    let totalItems = 0;
+    for (let i = 0; i < budgetData.length; i += 1) {
+      totalItems += budgetData[i];
+    }
+    return (budget / totalItems) * 100;
+  };
   const data = {
     labels: budgetLabel,
     datasets: [
@@ -68,9 +76,13 @@ function ActivityChart() {
                 ></div>
                 <p>{item}</p>
               </div>
-              <p>
-                {data.datasets[0].data[index]} USD
-                <span></span>
+              <p className="text-[#a7a7a7] text-xs font-light">
+                {data.datasets[0].data[index]} USD -
+                <span
+                  className={`ml-1 text-[${data.datasets[0].backgroundColor[index]}]`}
+                >
+                  {percentage(data.datasets[0].data[index]).toFixed(2)}
+                </span>
               </p>
             </div>
           );
