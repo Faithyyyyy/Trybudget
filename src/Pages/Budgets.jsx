@@ -33,6 +33,7 @@ function Budgets() {
     categoryID,
     budgetData,
     budgetLabel,
+    totalBudgetAmount,
   } = useSelector((store) => {
     return store.budget;
   });
@@ -48,8 +49,12 @@ function Budgets() {
     localStorage.setItem("budget", JSON.stringify(budgetList));
     localStorage.setItem("budgetData", JSON.stringify(budgetData));
     localStorage.setItem("budgetLabel", JSON.stringify(budgetLabel));
+    localStorage.setItem(
+      "totalBudgetAmount",
+      JSON.stringify(totalBudgetAmount)
+    );
   }, [budgetList]);
-
+  console.log(localStorage.getItem("totalBudgetAmount"));
   const [selectedBox, setSelectedBox] = useState(0);
   const handleclick = (id) => {
     setSelectedBox(id);

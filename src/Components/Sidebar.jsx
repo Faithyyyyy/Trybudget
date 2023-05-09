@@ -1,22 +1,25 @@
 import { NavLink } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { useEffect } from "react";
 
 function Sidebar() {
-  const { totalBudgetAmount } = useSelector((store) => {
+  const { totalBudgetAmount, budgetList } = useSelector((store) => {
     return store.budget;
   });
   const { totalExpenseAmount } = useSelector((store) => {
     return store.expense;
   });
   const total = totalBudgetAmount + totalExpenseAmount;
-  const totalBudget = useSelector((store) => {
-    return store.budget.TotalBudget;
+  let totals = 0;
+  budgetList.forEach((item) => {
+    totals += parseInt(item.amount);
   });
+
   return (
     <aside className="px-3 hidden lg:block w-[300px] fixed h-full bg-[#ff7461] top-0 left-0 pt-14">
       <div className="h-52 rounded w-full  lg:block bg-white/30 text-center text-white">
         <div className=" mx-auto max-h-[150px] w-[150px] translate-y-full">
-          <h2 className="font-semibold text-2xl">${total}</h2>
+          <h2 className="font-semibold text-2xl">${totals}</h2>
           <p className="mt-1">Current Budget</p>
         </div>
       </div>

@@ -37,41 +37,34 @@ function ActivityChart() {
       },
     ],
   };
-  const options = {
-    plugins: {
-      legend: {
-        position: "right",
-      },
-      datalabels: {
-        color: "black",
-        font: {
-          weight: "bold",
-        },
-        formatter: (value, ctx) => {
-          let sum = 0;
-          let dataArr = ctx.chart.data.datasets[0].data;
-          dataArr.map((data) => {
-            sum += data;
-          });
-          let percentage = ((value * 100) / sum).toFixed(2) + "%";
-          return percentage;
+
+  const config = {
+    type: "doughnut",
+    data: data,
+    options: {
+      responsive: true,
+      plugins: {
+        legend: {
+          position: "top",
         },
       },
     },
   };
-
   return (
-    <>
-      <Doughnut data={data} options={options} />
+    <div className="xl:flex xl:h-96 items-center ">
+      <Doughnut data={data} className="max-w-[500px] " />
       <div>
         {data.labels.map((item, index) => {
           return (
-            <div className="bg-[#fbfbfb] bs mb-4 py-2 px-3" key={index}>
-              <div className="flex items-center gap-3">
+            <div
+              className="bg-[#fbfbfb] bs mb-4 py-2 px-3 w-full max-w-xl"
+              key={index}
+            >
+              <div className="flex items-center  gap-3">
                 <div
                   className={`rounded bg-[${data.datasets[0].backgroundColor[index]}] h-3 w-3`}
                 ></div>
-                <p>{item}</p>
+                <p className="text-[#6c7983] text-sm">{item}</p>
               </div>
               <p className="text-[#a7a7a7] text-xs font-light mt-1">
                 {data.datasets[0].data[index]} USD -
@@ -85,7 +78,7 @@ function ActivityChart() {
           );
         })}
       </div>
-    </>
+    </div>
   );
 }
 

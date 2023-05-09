@@ -23,6 +23,9 @@ function HomePage() {
   useEffect(() => {
     AOS.init({ duration: 1000 });
   }, []);
+  useEffect(() => {
+    localStorage.setItem("budget", JSON.stringify(budgetList));
+  }, [budgetList]);
   return (
     <div className="bg-[#ffede9] pb-11 min-h-screen">
       <Header />

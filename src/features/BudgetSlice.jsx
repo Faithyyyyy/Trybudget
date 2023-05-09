@@ -24,6 +24,7 @@ const getBudgetData = () => {
 
 const getTotalAmount = () => {
   let amount = localStorage.getItem("totalBudgetAmount");
+  console.log(amount);
   if (amount) {
     return JSON.parse(amount);
   }
@@ -31,7 +32,7 @@ const getTotalAmount = () => {
 };
 
 const initialState = {
-  totalBudgetAmount: getTotalAmount(),
+  totalBudgetAmount: 0,
   budgetList: getBudgetList(),
   budgetData: getBudgetData(),
   mainBudget: "",
@@ -72,6 +73,8 @@ const budgetSlice = createSlice({
     },
     clearBudgetlist: (state) => {
       state.budgetList = [];
+      state.budgetData = [];
+      state.budgetLabel = [];
     },
     setIsEditing: (state, action) => {
       state.isEditing = action.payload;
