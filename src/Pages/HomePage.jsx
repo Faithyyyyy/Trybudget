@@ -19,6 +19,14 @@ function HomePage() {
     return store.expense;
   });
   const total = totalBudgetAmount + totalExpenseAmount;
+  let totals = 0;
+  budgetList.forEach((item) => {
+    totals += parseInt(item.amount);
+  });
+  let expenseTotals = 0;
+  expenseList.forEach((item) => {
+    expenseTotals += parseInt(item.amount);
+  });
 
   useEffect(() => {
     AOS.init({ duration: 1000 });
@@ -42,7 +50,7 @@ function HomePage() {
                 <CurrentBalanceSvg />
               </SvgWrap>
               <p className="mt-2 mb-1">Current Balance</p>
-              <p className="text-2xl font-light">${totalBudgetAmount}.00</p>
+              <p className="text-2xl font-light">${totals}.00</p>
             </div>
             <div className="w-[50%] bg-[#7688F3] h-52 rounded bg-[url(https://trybudget.netlify.app/static/media/bg-pattern.2d6e7fc4fd2fc3ff90ce.svg)] bg-no-repeat bg-left-top text-white pl-10 flex flex-col justify-center ">
               <SvgWrap>
@@ -56,7 +64,7 @@ function HomePage() {
                 </svg>
               </SvgWrap>
               <p className="mt-2 mb-1">Amount Spent</p>
-              <p className="text-2xl font-light">${totalExpenseAmount}.00</p>
+              <p className="text-2xl font-light">${expenseTotals}.00</p>
             </div>
           </div>
         </div>
