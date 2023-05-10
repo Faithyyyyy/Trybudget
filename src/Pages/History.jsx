@@ -8,7 +8,7 @@ function History() {
       <div className=" max-w-[1420px] largeScreenCentered ">
         <div className="px-5 lg:ml-[320px]">
           <Header />
-          <div className="mt-14 flex flex-col gap-5">
+          <div className="mt-14 flex flex-col gap-5 ">
             {/* Budget History statistics */}
             <div className="bg-white pb-7 px-3 rounded-lg">
               <div className="flex items-center gap-2 justify-center border-b border-[#dbe1e8] py-4 mb-5">

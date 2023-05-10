@@ -16,7 +16,7 @@ import { data as listItems } from "../data";
 ChartJS.register(CategoryScale, ...registerables);
 
 function ExpenseStats() {
-  const { budgetData, budgetLabel, expenseList } = useSelector((store) => {
+  const { expenseList } = useSelector((store) => {
     return store.expense;
   });
   let exps = [];
@@ -56,9 +56,53 @@ function ExpenseStats() {
       },
     ],
   };
+  const day = new Date().getDate();
+
+  var today = new Date();
+  var month = today.toLocaleString("default", { month: "long" });
+
+  const now = new Date();
+  function padTo2Digits(num) {
+    return String(num).padStart(2, "0");
+  }
+  const hoursAndMinutes = now.getHours() + ":" + padTo2Digits(now.getMinutes());
+
   return (
     <div>
       <Bar data={data} />
+      <div className="grid statsGrid w-full mt-8">
+        {expenseList?.map((expense, index) => {
+          return (
+            <div
+              key={expense.id}
+              className="bg-[#fbfbfb] flex my-3 md:mb-0 justify-between items-center py-2 px-3 rounded "
+            >
+              <div className="flex gap-3 items-center">
+                <div className="bg-[#c3c9f4] p-1 rounded-full self-center w-7 h-7 mx-auto mb-1">
+                  <div className="text-[#7788f4] text-xl ">
+                    {listItems[expense.id - 1].icon}
+                  </div>
+                </div>
+                <div>
+                  <p className="font-light text-xs ">{expense.name}</p>
+                  <p className="font-light text-[10px] mt-[2px] text-[#6c7983]">
+                    <span>{day}</span> <span>{month}</span>{" "}
+                    <span>{hoursAndMinutes}</span>
+                  </p>
+                </div>
+              </div>
+              <div className="flex flex-col">
+                <p
+                  className={`font-light text-xs text-center text-[${data.datasets[0].backgroundColor[index]}]`}
+                >
+                  {expense.amount}
+                </p>
+                <span className="text-[10px] text-[#6c7983]">USD</span>
+              </div>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }

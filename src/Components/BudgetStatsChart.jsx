@@ -71,7 +71,7 @@ function BudgetStats() {
   return (
     <div className="flex flex-col items-center justify-center ">
       <Doughnut data={data} className="max-w-[400px] max-h-[400px]" />
-      <div className="grid statsGrid w-full">
+      <div className="grid statsGrid w-full mt-8">
         {budgetList?.map((budget, index) => {
           return (
             <div
@@ -96,7 +96,6 @@ function BudgetStats() {
                 <p
                   className={`font-light text-xs text-center text-[${data.datasets[0].backgroundColor[index]}]`}
                 >
-                  {console.log(data.datasets[0].backgroundColor[index])}
                   {budget.amount}
                 </p>
                 <span className="text-[10px] text-[#6c7983]">USD</span>
