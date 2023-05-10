@@ -118,7 +118,6 @@ function Expense() {
   // logic to check if a selected expense has been budgetted for
   const checkSelectedExpense = (id, info) => {
     const checkers = budgetList.find((budlist) => id === budlist.id);
-    console.log(checkers);
     if (!checkers) {
       return (
         // dispatch(setCurrentCategory("")),
@@ -134,11 +133,16 @@ function Expense() {
             ),
           }
         ),
-        handleclick(0)
+        // handleclick(0),
+        (disabled = true)
       );
+    } else {
+      handleclick(id);
+      dispatch(setCurrentCategory(info));
+      dispatch(setcategoryID(id));
     }
   };
-
+  console.log(expenseList);
   return (
     <section className="bg-[#7788f479] min-h-screen font-poppins">
       <div className=" lg:ml-[320px] px-5" data-aos="fade-out">
@@ -154,13 +158,10 @@ function Expense() {
               return (
                 <div
                   onClick={() => {
-                    handleclick(d.id);
-                    dispatch(setCurrentCategory(d.role));
-                    dispatch(setcategoryID(d.id));
                     checkSelectedExpense(d.id, d.role);
                   }}
                   key={d.id}
-                  className={`bg-[#7788f479] border-2 transition-opacity opacity-100  ${
+                  className={`bg-[#7788f479] border-2 transition-opacity opacity-100 cursor-pointer ${
                     selectedBox === d.id ? " border-[#7788f4]" : "border-white"
                   } inline-block justify-center items-center py-3 lg:py-6 rounded relative`}
                 >

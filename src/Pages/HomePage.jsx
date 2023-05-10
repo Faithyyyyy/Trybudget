@@ -40,7 +40,7 @@ function HomePage() {
       <Account />
 
       <main
-        className="ml-[320px] mr-8 max-w-7xl mx-auto hidden lg:block mt-14"
+        className="ml-[320px] mr-8 max-w-7xl mx-auto hidden lg:block mt-14 largeScreenCentered"
         data-aos="fade-out"
       >
         <div className="w-full">
