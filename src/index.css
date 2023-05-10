@@ -76,6 +76,7 @@ progress::-webkit-progress-bar {
     gap: 10px;
   }
 }
+
 @media screen and (min-width: 2000px) {
   .largeScreenCentered {
     margin-left: 0px;
