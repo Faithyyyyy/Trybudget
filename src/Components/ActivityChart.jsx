@@ -65,7 +65,7 @@ function ActivityChart() {
   };
   return (
     <div className="flex flex-col xl:flex-row mt-14 xl:h-96 gap-10 items-center justify-center xl:gap-20">
-      <Doughnut data={data} className="max-w-[500px] " />
+      <Doughnut data={data} className="max-w-[500px] max-h-[500px]" />
       <div className="flex flex-wrap gap-6">
         {data.labels.map((item, index) => {
           return (
@@ -84,8 +84,8 @@ function ActivityChart() {
                 <span
                   className={`ml-1 text-[${data.datasets[0].backgroundColor[index]}]`}
                 >
-                  {console.log(data.datasets[0].backgroundColor[index])}
-                  {console.log(index)}
+                  {/* {console.log(data.datasets[0].backgroundColor[index])}
+                  {console.log(index)} */}
                   {percentage(data.datasets[0].data[index]).toFixed(2)}%
                 </span>
               </p>

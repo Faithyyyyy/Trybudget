@@ -76,7 +76,12 @@ progress::-webkit-progress-bar {
     gap: 10px;
   }
 }
-
+@media screen and (min-width: 750px) {
+  .statsGrid {
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 10px;
+  }
+}
 @media screen and (min-width: 2000px) {
   .largeScreenCentered {
     margin-left: 0px;
