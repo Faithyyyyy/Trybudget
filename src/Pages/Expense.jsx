@@ -49,7 +49,7 @@ function Expense() {
     setSelectedBox(id);
   };
 
-  // Anytime you add to the budget list, update the saced state int he local storage, this is to retain the data gotten even after refresh
+  // Anytime you add to the expense list, update the saved state in the local storage, this is to retain the data gotten even after refresh
   useEffect(() => {
     if (expenseList) {
       dispatch(calculateTotalBudget());
@@ -57,7 +57,7 @@ function Expense() {
     }
   }, [expenseList]);
 
-  // Add to the budget list when a budget is inputted
+  // Add to the expense list when a budget is inputted
   const addToExpenseList = () => {
     const checkExpenseList = expenseList.find(
       (expList) => expList.id === selectedBox
@@ -91,7 +91,7 @@ function Expense() {
     setSelectedBox(0);
   };
 
-  // logic tp handle the submission of the form
+  // logic to handle the submission of the form
   const handleSubmit = (e) => {
     e.preventDefault();
     addToExpenseList();
@@ -113,6 +113,7 @@ function Expense() {
     dispatch(setCurrentCategory(""));
     dispatch(setMainExpense(""));
     setSelectedBox(0);
+    disabled = true;
   };
   // logic to check if a selected expense has been budgetted for
   const checkSelectedExpense = (id, info) => {
@@ -120,7 +121,7 @@ function Expense() {
     console.log(checkers);
     if (!checkers) {
       return (
-        setSelectedBox(0),
+        // dispatch(setCurrentCategory("")),
         toast.warning(
           <p>
             Create a budget for <span className="text-[#ff7461]">{info}</span>{" "}
@@ -132,7 +133,8 @@ function Expense() {
               <GiCancel className="text-[#ff7461] text-lg" />
             ),
           }
-        )
+        ),
+        handleclick(0)
       );
     }
   };

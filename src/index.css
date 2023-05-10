@@ -79,8 +79,8 @@ progress::-webkit-progress-bar {
 .bs {
   box-shadow: 0 1px 2px 0 rgb(60 64 67/3%), 0 1px 3px 1px rgb(60 64 67/3%);
 }
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  grid-column-gap: 30px;
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
