@@ -54,7 +54,6 @@ function Budgets() {
       JSON.stringify(totalBudgetAmount)
     );
   }, [budgetList]);
-  console.log(localStorage.getItem("totalBudgetAmount"));
   const [selectedBox, setSelectedBox] = useState(0);
   const handleclick = (id) => {
     setSelectedBox(id);
@@ -66,7 +65,6 @@ function Budgets() {
       (budList) => budList.id === selectedBox
     );
     const checkBudgetLabel = budgetLabel.includes(currentCategory);
-    console.log(checkBudgetLabel);
     const checkBudgetItemId = budgetList.find(
       (budList) => budList.id === editID
     );

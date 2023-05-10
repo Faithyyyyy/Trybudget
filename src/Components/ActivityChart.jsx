@@ -53,11 +53,11 @@ function ActivityChart() {
   return (
     <div className="xl:flex xl:h-96 items-center ">
       <Doughnut data={data} className="max-w-[500px] " />
-      <div>
+      <div className="grid">
         {data.labels.map((item, index) => {
           return (
             <div
-              className="bg-[#fbfbfb] bs mb-4 py-2 px-3 w-full max-w-xl"
+              className="bg-[#fbfbfb] bs mb-4 py-2 px-3 max-w-xl"
               key={index}
             >
               <div className="flex items-center  gap-3">

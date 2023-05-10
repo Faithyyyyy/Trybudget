@@ -2,31 +2,30 @@ import { useSelector } from "react-redux";
 import { PercentageConversion } from "../Utils/PercentageConversion";
 
 function MobileExpressbar() {
-  const { totalBudgetAmount } = useSelector((store) => {
+  const { totalBudgetAmount, budgetList } = useSelector((store) => {
     return store.budget;
   });
-  const { totalExpenseAmount } = useSelector((store) => {
+  const { totalExpenseAmount, expenseList } = useSelector((store) => {
     return store.expense;
   });
-  const convertToPercent = PercentageConversion(
-    totalExpenseAmount,
-    totalBudgetAmount
-  );
 
+  let totals = 0;
+  budgetList.forEach((item) => {
+    totals += parseInt(item.amount);
+  });
+  let expenseTotals = 0;
+  expenseList.forEach((item) => {
+    expenseTotals += parseInt(item.amount);
+  });
   return (
     <section className="bg-white  lg:hidden rounded py-10 px-3  mt-10 mx-5">
       <p className="font-light text-sm text-gray-400">Expenses so far</p>
       <div className="flex justify-between my-2">
-        <p className="font-light text-md">${totalExpenseAmount}.00</p>
-        <p className="font-light text-md">${totalBudgetAmount}.00</p>
+        <p className="font-light text-md">${expenseTotals}.00</p>
+        <p className="font-light text-md">${totals}.00</p>
       </div>
       <label htmlFor="file"></label>
-      <progress
-        id="file"
-        max={totalBudgetAmount}
-        value={totalExpenseAmount}
-      ></progress>
-      <p></p>
+      <progress id="file" max={totals} value={expenseTotals}></progress>
     </section>
   );
 }
