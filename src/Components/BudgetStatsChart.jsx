@@ -67,6 +67,7 @@ function BudgetStats() {
     return String(num).padStart(2, "0");
   }
   const hoursAndMinutes = now.getHours() + ":" + padTo2Digits(now.getMinutes());
+
   return (
     <div className="flex flex-col items-center justify-center ">
       <Doughnut data={data} className="max-w-[400px] max-h-[400px]" />
