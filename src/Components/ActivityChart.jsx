@@ -4,10 +4,23 @@ import { useSelector } from "react-redux";
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 function ActivityChart() {
-  const { budgetData, budgetLabel } = useSelector((store) => {
+  const { budgetData, budgetLabel, budgetList } = useSelector((store) => {
     return store.budget;
   });
-
+  let bud = [];
+  let label = [];
+  const getBudList = () => {
+    bud = budgetList.map((budList) => {
+      return budList.amount;
+    });
+    return bud;
+  };
+  const getbudLabel = () => {
+    label = budgetList.map((budList) => {
+      return budList.name;
+    });
+    return label;
+  };
   const percentage = (budget) => {
     let totalItems = 0;
     for (let i = 0; i < budgetData.length; i += 1) {
@@ -16,11 +29,11 @@ function ActivityChart() {
     return (budget / totalItems) * 100;
   };
   const data = {
-    labels: budgetLabel,
+    labels: getbudLabel(),
     datasets: [
       {
         label: "Budget",
-        data: budgetData,
+        data: getBudList(),
         backgroundColor: [
           "#ff7461",
           "#e52165",
@@ -28,10 +41,10 @@ function ActivityChart() {
           "#fbcbc9",
           "#36a2eb",
           "#cbf6db",
-          "#e52165",
-          "#5c3c92",
-          "#fbcbc9",
-          "#f5f0e1",
+          "#0d1137",
+          "#077b8a",
+          "#12a4d9",
+          "#b20238",
         ],
         hoverOffset: 4,
       },
@@ -51,13 +64,13 @@ function ActivityChart() {
     },
   };
   return (
-    <div className="xl:flex xl:h-96 items-center ">
+    <div className="flex flex-col xl:flex-row mt-14 xl:h-96 gap-10 items-center justify-center xl:gap-20">
       <Doughnut data={data} className="max-w-[500px] " />
-      <div className="grid">
+      <div className="flex flex-wrap gap-6">
         {data.labels.map((item, index) => {
           return (
             <div
-              className="bg-[#fbfbfb] bs mb-4 py-2 px-3 max-w-xl"
+              className="bg-[#fbfbfb] bs mb-4 py-2 px-3 max-w-xl xl:w-[200px]"
               key={index}
             >
               <div className="flex items-center  gap-3">
@@ -71,6 +84,8 @@ function ActivityChart() {
                 <span
                   className={`ml-1 text-[${data.datasets[0].backgroundColor[index]}]`}
                 >
+                  {console.log(data.datasets[0].backgroundColor[index])}
+                  {console.log(index)}
                   {percentage(data.datasets[0].data[index]).toFixed(2)}%
                 </span>
               </p>

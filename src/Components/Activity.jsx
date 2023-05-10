@@ -7,7 +7,7 @@ function Activity() {
     return store.budget;
   });
   return (
-    <section className="bg-white rounded py-10 px-10 w-full mt-10 ">
+    <section className="bg-white rounded py-10 px-10 w-full mt-10 pb-20">
       <div className="flex justify-between">
         <h2 className="font-black uppercase">Activity</h2>
         <div className="">
