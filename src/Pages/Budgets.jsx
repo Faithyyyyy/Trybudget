@@ -122,7 +122,7 @@ function Budgets() {
   };
 
   return (
-    <section className="bg-[#ffede9] min-h-screen font-poppins  border-gray-800">
+    <section className="bg-[#ffede9] min-h-screen font-poppins">
       <div className=" max-w-[1420px] largeScreenCentered">
         <div className=" lg:ml-[320px] px-5  max-w-7xl largeScreenCentered">
           <Header />

@@ -142,7 +142,6 @@ function Expense() {
       dispatch(setcategoryID(id));
     }
   };
-  console.log(expenseList);
   return (
     <section className="bg-[#7788f479] min-h-screen font-poppins">
       <div className=" max-w-[1420px] largeScreenCentered">
