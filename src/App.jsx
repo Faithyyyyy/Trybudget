@@ -4,6 +4,7 @@ import Budgets from "./Pages/Budgets";
 import Expense from "./Pages/Expense";
 import { Route, Routes } from "react-router-dom";
 import Sidebar from "./Components/Sidebar";
+import History from "./Pages/History";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/" element={<Homepage />} />
         <Route path="/budget" element={<Budgets />} />
         <Route path="/expense" element={<Expense />} />
+        <Route path="/history" element={<History />} />
       </Routes>
     </div>
   );
