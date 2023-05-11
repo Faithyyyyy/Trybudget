@@ -3,7 +3,7 @@ function EmptyBudgetStats() {
   return (
     <div className="flex justify-center items-center gap-4 flex-col mt-8 py-5">
       <div className="bg-[#dfd3e9] p-1 rounded-md inline-block">
-        <div className="bg-gradient-to-tl from-indigo-300 to-red-400 p-2 rounded-full">
+        <div className="bg-gradient-to-tl from-indigo-300 to-red-400 p-1 rounded-full">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"

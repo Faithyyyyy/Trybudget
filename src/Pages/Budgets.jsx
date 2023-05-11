@@ -3,10 +3,13 @@ import { HiOutlineXMark } from "react-icons/hi2";
 import { HiOutlinePencil } from "react-icons/hi";
 import { RiDeleteBin5Line } from "react-icons/ri";
 import { GrFormCheckmark } from "react-icons/gr";
+import { AiOutlineInfoCircle } from "react-icons/ai";
 import { useState, useEffect } from "react";
 import { data } from "../data.jsx";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { useSelector, useDispatch } from "react-redux";
 import {
   setMainBudget,
@@ -23,6 +26,7 @@ import {
 } from "../features/BudgetSlice";
 
 function Budgets() {
+  const customId = "custom-id-yes";
   const {
     // budgetsList,
     isEditing,
@@ -120,7 +124,34 @@ function Budgets() {
     dispatch(setMainBudget(""));
     setSelectedBox(0);
   };
+  // logic to inform users about the edit button
 
+  const checkSelectedBudget = (id, info) => {
+    const checkers = budgetList.find((budlist) => id === budlist.id);
+    if (checkers) {
+      return (
+        // dispatch(setCurrentCategory("")),
+        toast.warning(
+          <p>
+            Use the edit button to modify{" "}
+            <span className="text-[#7788f4]">{info}</span> budget
+          </p>,
+          {
+            toastId: customId,
+            icon: ({ theme, type }) => (
+              <AiOutlineInfoCircle className="text-[#7788f4] text-lg" />
+            ),
+          }
+        ),
+        // handleclick(0),
+        (disabled = true)
+      );
+    } else {
+      handleclick(id);
+      dispatch(setCurrentCategory(info));
+      dispatch(setcategoryID(id));
+    }
+  };
   return (
     <section className="bg-[#ffede9] min-h-screen font-poppins">
       <div className=" max-w-[1420px] largeScreenCentered">
@@ -141,6 +172,7 @@ function Budgets() {
                       handleclick(d.id);
                       dispatch(setCurrentCategory(d.role));
                       dispatch(setcategoryID(d.id));
+                      checkSelectedBudget(d.id, d.role);
                     }}
                     key={d.id}
                     className={`bg-[#ffede9]  border-2 transition-opacity opacity-100 ${
@@ -225,7 +257,7 @@ function Budgets() {
                       <div className="bg-[#f9e0d9] p-1 rounded-full self-center w-8 mx-auto mb-1">
                         <div className="text-[#ff7461] text-xl ">
                           {" "}
-                          {data[budget.id - 1].icon}
+                          {data[budget.id - 1]?.icon}
                         </div>
                       </div>
                       <p className="font-light text-xs text-center">
@@ -258,6 +290,23 @@ function Budgets() {
           </div>
         </div>
       </div>
+      <ToastContainer
+        position="top-center"
+        autoClose={2000}
+        hideProgressBar={true}
+        closeButton={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+        className="w-[70%] m-6 md:w-[1400px] flex"
+        bodyClassName={() =>
+          "text-xs gap-0 font-poppins flex items-center justify-center"
+        }
+      />
     </section>
   );
 }
