@@ -92,9 +92,7 @@ function ExpenseStats() {
                 </div>
               </div>
               <div className="flex flex-col">
-                <p
-                  className={`font-light text-xs text-center text-[${data.datasets[0].backgroundColor[index]}]`}
-                >
+                <p className={`font-light text-xs text-center text-[#7788f4]`}>
                   {expense.amount}
                 </p>
                 <span className="text-[10px] text-[#6c7983]">USD</span>

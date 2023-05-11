@@ -74,18 +74,12 @@ function ActivityChart() {
               key={index}
             >
               <div className="flex items-center  gap-3">
-                <div
-                  className={`rounded bg-[${data.datasets[0].backgroundColor[index]}] h-3 w-3`}
-                ></div>
+                <div className={`rounded bg-[#ff7461] h-3 w-3`}></div>
                 <p className="text-[#6c7983] text-sm">{item}</p>
               </div>
               <p className="text-[#a7a7a7] text-xs font-light mt-1">
                 {data.datasets[0].data[index]} USD -
-                <span
-                  className={`ml-1 text-[${data.datasets[0].backgroundColor[index]}]`}
-                >
-                  {/* {console.log(data.datasets[0].backgroundColor[index])}
-                  {console.log(index)} */}
+                <span className={`ml-1 text-[#ff7461]`}>
                   {percentage(data.datasets[0].data[index]).toFixed(2)}%
                 </span>
               </p>
