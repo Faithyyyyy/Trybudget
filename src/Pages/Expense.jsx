@@ -222,7 +222,7 @@ function Expense() {
           <div className="mt-14 pb-24">
             <div className="flex justify-between">
               <h3 className="font-bold text-[#6c7983]">
-                ({expenseList?.length}) Budgets
+                ({expenseList?.length}) Expense
               </h3>
               {expenseList?.length > 0 && (
                 <button
