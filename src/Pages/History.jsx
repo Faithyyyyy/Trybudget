@@ -2,7 +2,17 @@ import Header from "../Components/Header";
 import { ImStatsDots } from "react-icons/im";
 import BudgetStats from "../Components/BudgetStatsChart";
 import ExpenseStats from "../Components/ExpenseStatsChart";
+import EmptyBudgetStats from "../Components/EmptyBudgetStats";
+import EmptyExpenseStats from "../Components/EmptyExpense";
+import { useSelector } from "react-redux";
+
 function History() {
+  const { budgetList } = useSelector((store) => {
+    return store.budget;
+  });
+  const { expenseList } = useSelector((store) => {
+    return store.expense;
+  });
   return (
     <div className="bg-[#ffede9] min-h-screen font-poppins pb-20">
       <div className=" max-w-[1420px] largeScreenCentered ">
@@ -18,7 +28,7 @@ function History() {
                 </p>
               </div>
               <div className=" ">
-                <BudgetStats />
+                {budgetList.length > 0 ? <BudgetStats /> : <EmptyBudgetStats />}
               </div>
             </div>
             {/* Expense History statistics */}
@@ -30,7 +40,11 @@ function History() {
                 </p>
               </div>
               <div className=" ">
-                <ExpenseStats />
+                {expenseList.length > 0 ? (
+                  <ExpenseStats />
+                ) : (
+                  <EmptyExpenseStats />
+                )}
               </div>
             </div>
             {/* Expense History statistics */}
