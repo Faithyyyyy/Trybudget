@@ -21,8 +21,8 @@ function MobileExpressbar() {
     <section className="bg-white  lg:hidden rounded py-10 px-3  mt-10 mx-5">
       <p className="font-light text-sm text-gray-400">Expenses so far</p>
       <div className="flex justify-between my-2">
-        <p className="font-light text-md">${expenseTotals}.00</p>
-        <p className="font-light text-md">${totals}.00</p>
+        <p className="font-light text-sm">${expenseTotals}.00</p>
+        <p className="font-light text-sm">${totals}.00</p>
       </div>
       <label htmlFor="file"></label>
       <progress id="file" max={totals} value={expenseTotals}></progress>

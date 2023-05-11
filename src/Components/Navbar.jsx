@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 
 function Navbar() {
   return (
-    <nav className="bg-white rounded h-14 fixed bottom-10 left-0 nav flex justify-around items-center lg:hidden z-10">
+    <nav className="bg-white rounded h-14 fixed bottom-0 left-0 nav flex justify-around items-center lg:hidden z-10">
       <NavLink
         to="/"
         className="mobileNav"
