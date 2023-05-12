@@ -41,6 +41,9 @@ function Budgets() {
   } = useSelector((store) => {
     return store.budget;
   });
+  const { expenseList } = useSelector((store) => {
+    return store.expense;
+  });
   const dispatch = useDispatch();
   // for the smooth transition
   useEffect(() => {
@@ -124,8 +127,8 @@ function Budgets() {
     dispatch(setMainBudget(""));
     setSelectedBox(0);
   };
-  // logic to inform users about the edit button
 
+  // logic to inform users about the edit button
   const checkSelectedBudget = (id, info) => {
     const checkers = budgetList.find((budlist) => id === budlist.id);
     if (checkers) {
@@ -146,12 +149,26 @@ function Budgets() {
         // handleclick(0),
         (disabled = true)
       );
-    } else {
-      handleclick(id);
-      dispatch(setCurrentCategory(info));
-      dispatch(setcategoryID(id));
     }
+    //else {
+    //   handleclick(id);
+    //   dispatch(setCurrentCategory(info));
+    //   dispatch(setcategoryID(id));
+    // }
   };
+
+  // logic to delete expense as we delete the budget
+  // const deleteSynonymousExpenseItem = (id) => {
+  //   const checkers = expenseList.find((budlist) => id === budlist.id);
+  //   if (checkers) {
+  //     return expenseList.filter((item) => item.id !== id);
+  //   }
+  //   //else {
+  //   //   handleclick(id);
+  //   //   dispatch(setCurrentCategory(info));
+  //   //   dispatch(setcategoryID(id));
+  //   // }
+  // };
   return (
     <section className="bg-[#ffede9] min-h-screen font-poppins">
       <div className=" max-w-[1420px] largeScreenCentered">
@@ -280,7 +297,10 @@ function Budgets() {
                       />
                       <RiDeleteBin5Line
                         className="text-[#ff7461] cursor-pointer"
-                        onClick={() => dispatch(removeBudgetItem(budget.id))}
+                        onClick={() => {
+                          dispatch(removeBudgetItem(budget.id));
+                          // deleteSynonymousExpenseItem(budget.id);
+                        }}
                       />
                     </div>
                   </div>
