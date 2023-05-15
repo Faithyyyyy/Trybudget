@@ -15,12 +15,14 @@ function BudgetStats() {
     });
     return bud;
   };
+
   const getbudLabel = () => {
     label = budgetList.map((budList) => {
       return budList.name;
     });
     return label;
   };
+
   const data = {
     labels: getbudLabel(),
     datasets: [
@@ -57,16 +59,30 @@ function BudgetStats() {
     },
   };
 
-  const day = new Date().getDate();
+  const getFormattedDateTime = (timestamp) => {
+    const date = new Date(timestamp);
+    const day = date.getDate();
+    const month = date.getMonth();
+    const hours = date.getHours();
+    const minutes = date.getMinutes();
 
-  var today = new Date();
-  var month = today.toLocaleString("default", { month: "long" });
+    const months = [
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "Jul",
+      "Aug",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec",
+    ];
 
-  const now = new Date();
-  function padTo2Digits(num) {
-    return String(num).padStart(2, "0");
-  }
-  const hoursAndMinutes = now.getHours() + ":" + padTo2Digits(now.getMinutes());
+    return `${day} ${months[month]} ${hours}:${minutes}`;
+  };
 
   return (
     <div className="flex flex-col items-center justify-center ">
@@ -87,8 +103,8 @@ function BudgetStats() {
                 <div>
                   <p className="font-light text-xs ">{budget.name}</p>
                   <p className="font-light text-[10px] mt-[2px] text-[#6c7983]">
-                    <span>{day}</span> <span>{month}</span>{" "}
-                    <span>{hoursAndMinutes}</span>
+                    {console.log(budget.date)}
+                    {getFormattedDateTime(Number(budget.date))}
                   </p>
                 </div>
               </div>

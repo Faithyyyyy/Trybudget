@@ -73,6 +73,7 @@ function Expense() {
             id: categoryID,
             name: currentExpense,
             amount: mainExpense,
+            date: new Date().getTime().toString(),
           },
         ])
       );

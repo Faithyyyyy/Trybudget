@@ -56,16 +56,31 @@ function ExpenseStats() {
       },
     ],
   };
-  const day = new Date().getDate();
 
-  var today = new Date();
-  var month = today.toLocaleString("default", { month: "long" });
+  const getFormattedDateTime = (timestamp) => {
+    const date = new Date(timestamp);
+    const day = date.getDate();
+    const month = date.getMonth();
+    const hours = date.getHours();
+    const minutes = date.getMinutes();
 
-  const now = new Date();
-  function padTo2Digits(num) {
-    return String(num).padStart(2, "0");
-  }
-  const hoursAndMinutes = now.getHours() + ":" + padTo2Digits(now.getMinutes());
+    const months = [
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "Jul",
+      "Aug",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec",
+    ];
+
+    return `${day} ${months[month]} ${hours}:${minutes}`;
+  };
 
   return (
     <div>
@@ -86,8 +101,7 @@ function ExpenseStats() {
                 <div>
                   <p className="font-light text-xs ">{expense.name}</p>
                   <p className="font-light text-[10px] mt-[2px] text-[#6c7983]">
-                    <span>{day}</span> <span>{month}</span>{" "}
-                    <span>{hoursAndMinutes}</span>
+                    {getFormattedDateTime(Number(expense.date))}
                   </p>
                 </div>
               </div>

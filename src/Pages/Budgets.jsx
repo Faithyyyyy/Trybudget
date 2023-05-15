@@ -84,6 +84,7 @@ function Budgets() {
             id: categoryID,
             name: currentCategory,
             amount: mainBudget,
+            date: new Date().getTime().toString(),
           },
         ])
       );
