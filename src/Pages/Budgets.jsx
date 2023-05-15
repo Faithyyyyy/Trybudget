@@ -24,6 +24,7 @@ import {
   setEditID,
   calculateTotalBudget,
 } from "../features/BudgetSlice";
+import { removeExpenseItem } from "../features/ExpenseSlice";
 
 function Budgets() {
   const customId = "custom-id-yes";
@@ -146,7 +147,6 @@ function Budgets() {
             ),
           }
         ),
-        // handleclick(0),
         (disabled = true)
       );
     }
@@ -158,17 +158,14 @@ function Budgets() {
   };
 
   // logic to delete expense as we delete the budget
-  // const deleteSynonymousExpenseItem = (id) => {
-  //   const checkers = expenseList.find((budlist) => id === budlist.id);
-  //   if (checkers) {
-  //     return expenseList.filter((item) => item.id !== id);
-  //   }
-  //   //else {
-  //   //   handleclick(id);
-  //   //   dispatch(setCurrentCategory(info));
-  //   //   dispatch(setcategoryID(id));
-  //   // }
-  // };
+  const handleRemoveBudget = (id) => {
+    dispatch(removeBudgetItem(id));
+    const checkers = expenseList.find((budlist) => id === budlist.id);
+    if (checkers) {
+      dispatch(removeExpenseItem(id));
+    }
+  };
+
   return (
     <section className="bg-[#ffede9] min-h-screen font-poppins">
       <div className=" max-w-[1420px] largeScreenCentered">
@@ -298,8 +295,7 @@ function Budgets() {
                       <RiDeleteBin5Line
                         className="text-[#ff7461] cursor-pointer"
                         onClick={() => {
-                          dispatch(removeBudgetItem(budget.id));
-                          // deleteSynonymousExpenseItem(budget.id);
+                          handleRemoveBudget(budget.id);
                         }}
                       />
                     </div>
