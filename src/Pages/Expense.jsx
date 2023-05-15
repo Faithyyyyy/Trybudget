@@ -62,9 +62,7 @@ function Expense() {
     const checkExpenseList = expenseList.find(
       (expList) => expList.id === selectedBox
     );
-    const checkExpenseItemId = expenseList.find(
-      (expList) => expList.id === editID
-    );
+
     if (!checkExpenseList) {
       dispatch(
         setExpenseList([
@@ -78,15 +76,7 @@ function Expense() {
         ])
       );
     }
-    if (checkExpenseItemId && isEditing) {
-      const set = expenseList.map((expense) => {
-        if (expense.id === editID) {
-          return { ...expense, amount: mainExpense };
-        }
-        return expense;
-      });
-      dispatch(setExpenseList(set));
-    }
+
     dispatch(setCurrentCategory(""));
     dispatch(setMainExpense(""));
     setSelectedBox(0);
@@ -109,6 +99,21 @@ function Expense() {
   } else {
     disabled = false;
   }
+
+  const editExpenseItem = () => {
+    const checkExpenseItemId = expenseList.find(
+      (expList) => expList.id === editID
+    );
+    if (checkExpenseItemId && isEditing) {
+      const set = expenseList.map((expense) => {
+        if (expense.id === editID && expense.name === currentExpense) {
+          return { ...expense, amount: mainExpense };
+        }
+        return expense;
+      });
+      dispatch(setExpenseList(set));
+    }
+  };
   // logic to deselect a selected category and its input if there's any
   const deselectCategory = () => {
     dispatch(setCurrentCategory(""));
@@ -214,6 +219,7 @@ function Expense() {
               </div>
               <button
                 disabled={disabled}
+                onClick={editExpenseItem}
                 className=" bg-[#7788f4] disabled:bg-[#a7a7a7] uppercase px-5 py-2 text-white rounded-2xl text-sm font-light tracking-wider"
               >
                 create

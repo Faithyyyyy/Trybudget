@@ -73,9 +73,9 @@ function Budgets() {
       (budList) => budList.id === selectedBox
     );
     const checkBudgetLabel = budgetLabel.includes(currentCategory);
-    const checkBudgetItemId = budgetList.find(
-      (budList) => budList.id === editID
-    );
+    // const checkBudgetItemId = budgetList.find(
+    //   (budList) => budList.id === editID
+    // );
     if (!checkBudgetList) {
       dispatch(
         setBudgetList([
@@ -89,15 +89,21 @@ function Budgets() {
         ])
       );
     }
-    if (checkBudgetItemId && isEditing) {
-      const set = budgetList.map((budget) => {
-        if (budget.id === editID) {
-          return { ...budget, amount: mainBudget };
-        }
-        return budget;
-      });
-      dispatch(setBudgetList(set));
-    }
+    // if (checkBudgetItemId && isEditing) {
+    //   console.log(editID);
+    //   const set = budgetList.map((budget) => {
+    //     if (budget.id === editID) {
+    //       return { ...budget, amount: mainBudget };
+    //     }
+    //     return budget;
+    //   });
+    //   dispatch(setBudgetList(set));
+    //   // dispatch(setBudgetList(set));
+    //   // dispatch(setBudgetList([...budgetList, set]));
+    //   // setSelectedBox(0);
+    //   // dispatch(setCurrentCategory(""));
+    //   // dispatch(setMainBudget(""));
+    // }
     if (!checkBudgetLabel) {
       dispatch(setBudgetLabel([...budgetLabel, currentCategory]));
     }
@@ -106,6 +112,22 @@ function Budgets() {
     dispatch(setMainBudget(""));
     setSelectedBox(0);
   };
+
+  const editBudList = () => {
+    const checkBudgetItemId = budgetList.find(
+      (budList) => budList.id === editID
+    );
+    if (checkBudgetItemId && isEditing) {
+      const set = budgetList.map((budget) => {
+        if (budget.id === editID && budget.name === currentCategory) {
+          return { ...budget, amount: mainBudget };
+        }
+        return budget;
+      });
+      dispatch(setBudgetList(set));
+    }
+  };
+
   // logic tp handle the submission of the form
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -242,6 +264,7 @@ function Budgets() {
               <button
                 disabled={disabled}
                 className={`bg-[#ff7461] disabled:bg-[#a7a7a7] uppercase px-5 py-2 text-white rounded-2xl text-sm font-light tracking-wider outline-none`}
+                onClick={editBudList}
               >
                 create
               </button>
