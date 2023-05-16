@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+input,
+textarea,
+button,
+select,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
 .account_oveview::after {
   content: url("https://trybudget.netlify.app/static/media/bg-pattern.2d6e7fc4fd2fc3ff90ce.svg");
   position: absolute;
