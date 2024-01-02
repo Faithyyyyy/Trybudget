@@ -1,6 +1,5 @@
 import { NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { useEffect } from "react";
 
 function Sidebar() {
   const { totalBudgetAmount, budgetList } = useSelector((store) => {
