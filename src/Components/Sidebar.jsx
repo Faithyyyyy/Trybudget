@@ -45,6 +45,7 @@ function Sidebar() {
           <p className="text-white/60 text-sm font-normal"> Home</p>
         </NavLink>
         {/* budget */}
+        {/* budget */}
         <NavLink
           to="/budget"
           className="flex items-center gap-5 cursor-pointer sideNav py-3 pl-2 rounded mb-5"
